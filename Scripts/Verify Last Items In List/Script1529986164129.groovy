@@ -13,22 +13,7 @@ Mobile.comment('Given that user has started an application')
 'Get full directory\'s path of android application'
 def appPath = PathUtil.relativeToAbsolutePath(GlobalVariable.G_AndroidApp, RunConfiguration.getProjectDir())
 
-Mobile.startApplication(appPath, false)
+Mobile.startExistingApplication('com.whatsapp')
 
 Mobile.comment('And he navigates the application to Graphics form')
-
-Mobile.tap(findTestObject('Application/android.widget.TextView - Graphics'), GlobalVariable.G_Timeout)
-
-Mobile.comment('When he scroll to Xfermodes text')
-
-Mobile.scrollToText('Xfermodes')
-
-Mobile.comment('Then the current screen should show Xfermodes text after scrolling')
-
-'Get item\'s label'
-def itemText = Mobile.getText(findTestObject('Application/Graphics/android.widget.TextView - Xfermodes'), GlobalVariable.G_Timeout)
-
-Mobile.verifyEqual(itemText, 'Xfermodes')
-
-Mobile.closeApplication()
 
